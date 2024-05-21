@@ -40,11 +40,4 @@ Dieses Projekt ist eine einfache To-Do Liste, die es Ihnen ermöglicht, Aufgaben
 
 <img width="1440" alt="image" src="https://github.com/olisebz/to-do/assets/113695174/380e6d51-8d42-4d13-a0c1-c6a94a7d6d8a">
 
-
-## Lizenz
-
-Dieses Projekt ist unter der MIT-Lizenz lizenziert. Weitere Informationen finden Sie in der `LICENSE`-Datei.
-
 ---
-
-Dieses README bietet eine umfassende Übersicht über die To-Do Liste Anwendung. Es erklärt die Hauptfunktionen, die Struktur der Dateien und wie man die Anwendung installiert und verwendet.
