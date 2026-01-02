@@ -1,6 +1,6 @@
 # To-Do List
 
-**[Live Demo](https://olisebz.github.io/ToDo/)**
+**[Live Demo](https://olisebz.github.io/to-do/)**
 
 ## Description
 
@@ -60,7 +60,7 @@ The `saveTodos()` function automatically saves after every change (add, delete, 
 
 ### Try it online
 
-Visit the [live demo](https://olisebz.github.io/ToDo/) - no installation needed!
+Visit the [live demo](https://olisebz.github.io/to-do/) - no installation needed!
 
 ### Run locally
 
