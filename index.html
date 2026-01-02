@@ -8,21 +8,23 @@
   <title>To-Do List</title>
 </head>
 <body>
-  <h1>To-Do Liste</h1>
-  <div id="container">
-    <input type="text" id="todo-input" size="50" placeholder="Neue Aufgabe hinzufügen" >
-    <button type="button" id="todo-button">Hinzufügen</button>
-  </div>
-  <div id="container-error">
+  <div class="app-container">
+    <h1>My To-Do List</h1>
     
-  </div>
-  <ul id="todo-list">
-    <li class="todo-li"><span class="todo-done">Get started 2</span><button type="button">Löschen</button></li>
-  </ul>
-  <div id="button-container">
-    <button class="last-btn" id="todo-clear" type="button">Alles Löschen</button>
-    <button class="last-btn" id="todo-checkall" type="button">Alles Makieren</button>
-    <button class="last-btn" id="todo-entcheck" type="button">Alles nicht Makieren</button>
+    <div id="container">
+      <input type="text" id="todo-input" placeholder="New task...">
+      <button type="button" id="todo-button">+</button>
+    </div>
+    
+    <div id="container-error"></div>
+    
+    <ul id="todo-list"></ul>
+    
+    <div id="button-container">
+      <button id="todo-checkall" type="button">Mark all</button>
+      <button id="todo-entcheck" type="button">Reset</button>
+      <button id="todo-clear" type="button">Delete</button>
+    </div>
   </div>
 </body>
 </html>
