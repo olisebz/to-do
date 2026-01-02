@@ -1,43 +1,62 @@
-# To-Do Liste
+# To-Do List
 
-## Beschreibung
+## Description
 
-Dieses Projekt ist eine einfache To-Do Liste, die es Ihnen ermöglicht, Aufgaben hinzuzufügen, zu löschen und ihren Status zu ändern. Es bietet auch Funktionen zum Markieren aller Aufgaben als erledigt oder nicht erledigt sowie zum Löschen aller Aufgaben. Die Anwendung wurde mit HTML, CSS und JavaScript erstellt.
+A simple and clean to-do list application that allows you to add, delete, and manage tasks. Features include marking tasks as complete, batch operations for all tasks, and automatic data persistence. Built with HTML, CSS, and vanilla JavaScript.
 
-## Dateien
+## Features
 
-- `index.html`: Die HTML-Datei, die die Struktur der To-Do Liste enthält.
-- `style.css`: Die CSS-Datei, die das Styling der To-Do Liste definiert.
-- `script.js`: Die JavaScript-Datei, die die Funktionalität der To-Do Liste implementiert.
+- Add new tasks (press Enter or click the + button)
+- Mark tasks as complete with checkboxes
+- Delete individual tasks
+- Mark all tasks as complete at once
+- Reset all tasks to incomplete
+- Clear all tasks
+- **LocalStorage persistence** - tasks are saved automatically
+- Clean, minimalist design
+- Responsive layout
 
-## Funktionen
+## Files
 
-### HTML
+- `index.html`: HTML structure of the to-do list
+- `style.css`: Styling and layout
+- `script.js`: Application logic and LocalStorage handling
 
-- Enthält ein Eingabefeld zum Hinzufügen neuer Aufgaben.
-- Beinhaltet Schaltflächen zum Hinzufügen, Löschen und Markieren von Aufgaben.
-- Stellt eine Liste (`ul`) bereit, die die To-Do Aufgaben enthält.
+## Technology Stack
 
-### CSS
+- **HTML5** - Semantic structure
+- **CSS3** - Modern styling with flexbox
+- **JavaScript (ES6+)** - Event handling and data persistence
+- **LocalStorage API** - Client-side data storage
 
-- Stilisiert die To-Do Liste und ihre Elemente.
-- Verleiht der Anwendung ein modernes und klares Aussehen.
-- Beinhaltet spezielle Klassen für erledigte Aufgaben und Schaltflächen.
+## How It Works
 
-### JavaScript
+### Data Persistence
 
-- `clickTodoButton`: Fügt eine neue Aufgabe zur Liste hinzu, wenn das Eingabefeld nicht leer ist. Markiert Aufgaben als erledigt, wenn das Kontrollkästchen aktiviert ist, und löscht Aufgaben, wenn die Löschen-Schaltfläche gedrückt wird.
-- `clickTodoClear`: Löscht alle Aufgaben in der Liste.
-- `clickTodoCheckAll`: Markiert alle Aufgaben in der Liste als erledigt.
-- `clickTodoEntCheck`: Markiert alle Aufgaben in der Liste als nicht erledigt.
+Tasks are saved in your browser's LocalStorage in JSON format:
+
+```json
+[
+  { "text": "Buy groceries", "done": false },
+  { "text": "Walk the dog", "done": true }
+]
+```
+
+The `saveTodos()` function automatically saves after every change (add, delete, check, uncheck), and `loadTodos()` retrieves them when the page loads.
+
+### Key Functions
+
+- `addTodo()`: Adds a new task to the list
+- `createTodoItem()`: Creates the DOM elements for each task
+- `saveTodos()`: Saves all tasks to LocalStorage
+- `loadTodos()`: Loads tasks from LocalStorage on page load
+- `checkAll()` / `uncheckAll()`: Batch operations for all tasks
+- `clearAll()`: Removes all tasks from the list
+- `showEmpty()`: Displays "No tasks" message when list is empty
 
 ## Installation
 
-1. Klonen oder laden Sie das Repository herunter.
-2. Öffnen Sie die Datei `index.html` in einem Webbrowser.
-
-### To-Do Liste Benutzeroberfläche
-
-<img width="1440" alt="image" src="https://github.com/olisebz/to-do/assets/113695174/380e6d51-8d42-4d13-a0c1-c6a94a7d6d8a">
-
+1. Clone or download this repository
+2. Open `index.html` in a web browser
+3. No build process or dependencies required!
 ---
