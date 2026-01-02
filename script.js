@@ -1,72 +1,116 @@
-// script.js
+// To-Do List
 
-document.getElementById('todo-button').addEventListener('click', clickTodoButton);
-document.getElementById('todo-clear').addEventListener('click', clickTodoClear);
-document.getElementById('todo-checkall').addEventListener('click', clickTodoCheckAll);
-document.getElementById('todo-entcheck').addEventListener('click', clickTodoEntCheck);
+const todoInput = document.getElementById('todo-input');
+const todoList = document.getElementById('todo-list');
+const errorElement = document.getElementById('container-error');
 
-function clickTodoButton() {
-  let todoInput = document.getElementById('todo-input');
-  let errorElement = document.getElementById('container-error');
-  if (todoInput.value.length > 0) {
-    let todoList = document.getElementById('todo-list');
-    let todoEntry = document.createElement('li');
-    let todoParagraph = document.createElement('span');
-    todoParagraph.textContent = todoInput.value;
-    let todoDeleteBtn = document.createElement('button');
-    let todoCheckbox = document.createElement('input');
-    todoDeleteBtn.addEventListener('click', function() {
-      todoList.removeChild(todoEntry);
-    });
-    todoCheckbox.addEventListener('change', function() {
-      if (todoCheckbox.checked) {
-        todoParagraph.classList.add('todo-done');
-      } else {
-        todoParagraph.classList.remove('todo-done');
-      }
-    });
-    todoDeleteBtn.textContent = 'Löschen';
-    todoCheckbox.type = 'checkbox';
-    todoEntry.appendChild(todoCheckbox);
-    todoEntry.appendChild(todoParagraph);
-    todoEntry.appendChild(todoDeleteBtn);
-    todoList.appendChild(todoEntry);
-    todoInput.value = '';
-    errorElement.textContent = '';
-  } else {
-    errorElement.textContent = 'Bitte geben Sie einen Wert ein!';
+// Event Listeners
+document.getElementById('todo-button').addEventListener('click', addTodo);
+document.getElementById('todo-clear').addEventListener('click', clearAll);
+document.getElementById('todo-checkall').addEventListener('click', checkAll);
+document.getElementById('todo-entcheck').addEventListener('click', uncheckAll);
+todoInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') addTodo();
+});
+
+// Load on start
+loadTodos();
+
+function addTodo() {
+  const text = todoInput.value.trim();
+  
+  if (!text) {
+    errorElement.textContent = 'Please enter a task!';
+    return;
+  }
+  
+  createTodoItem(text, false);
+  saveTodos();
+  todoInput.value = '';
+  errorElement.textContent = '';
+}
+
+function createTodoItem(text, done) {
+  const li = document.createElement('li');
+  li.className = 'todo-li';
+  
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.checked = done;
+  checkbox.addEventListener('change', () => {
+    span.classList.toggle('todo-done', checkbox.checked);
+    saveTodos();
+  });
+  
+  const span = document.createElement('span');
+  span.className = 'todo-text' + (done ? ' todo-done' : '');
+  span.textContent = text;
+  
+  const deleteBtn = document.createElement('button');
+  deleteBtn.className = 'delete-btn';
+  deleteBtn.textContent = '×';
+  deleteBtn.addEventListener('click', () => {
+    li.remove();
+    saveTodos();
+    showEmpty();
+  });
+  
+  li.append(checkbox, span, deleteBtn);
+  todoList.appendChild(li);
+  showEmpty();
+}
+
+function clearAll() {
+  if (todoList.querySelectorAll('.todo-li').length > 0) {
+    todoList.innerHTML = '';
+    saveTodos();
+    showEmpty();
   }
 }
 
-function clickTodoClear() {
-  let todoList = document.getElementById('todo-list');
-  todoList.innerHTML = '';
+function checkAll() {
+  todoList.querySelectorAll('.todo-li').forEach(li => {
+    li.querySelector('input').checked = true;
+    li.querySelector('span').classList.add('todo-done');
+  });
+  saveTodos();
 }
 
-function clickTodoCheckAll() {
-  let todoListItems = document.querySelectorAll('#todo-list li');
-
-  todoListItems.forEach(function(item) {
-    let checkbox = item.querySelector('input[type="checkbox"]');
-    let paragraph = item.querySelector('span');
-
-    if (checkbox && paragraph) {
-      checkbox.checked = true;
-      paragraph.classList.add('todo-done');
-    }
+function uncheckAll() {
+  todoList.querySelectorAll('.todo-li').forEach(li => {
+    li.querySelector('input').checked = false;
+    li.querySelector('span').classList.remove('todo-done');
   });
+  saveTodos();
 }
 
-function clickTodoEntCheck() {
-  let todoListItems = document.querySelectorAll('#todo-list li');
-
-  todoListItems.forEach(function(item) {
-    let checkbox = item.querySelector('input[type="checkbox"]');
-    let paragraph = item.querySelector('span');
-
-    if (checkbox && paragraph) {
-      checkbox.checked = false;
-      paragraph.classList.remove('todo-done');
-    }
+function saveTodos() {
+  const todos = [];
+  todoList.querySelectorAll('.todo-li').forEach(li => {
+    todos.push({
+      text: li.querySelector('span').textContent,
+      done: li.querySelector('input').checked
+    });
   });
+  localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+function loadTodos() {
+  const todos = JSON.parse(localStorage.getItem('todos') || '[]');
+  todos.forEach(t => createTodoItem(t.text, t.done));
+  showEmpty();
+}
+
+function showEmpty() {
+  const empty = todoList.querySelector('.empty-message');
+  const hasTodos = todoList.querySelectorAll('.todo-li').length > 0;
+  
+  if (!hasTodos && !empty) {
+    const msg = document.createElement('div');
+    msg.className = 'empty-message';
+    msg.textContent = 'No tasks';
+    todoList.appendChild(msg);
+  } else if (hasTodos && empty) {
+    empty.remove();
+  }
 }
