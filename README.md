@@ -1,5 +1,7 @@
 # To-Do List
 
+**[Live Demo](https://olisebz.github.io/ToDo/)**
+
 ## Description
 
 A simple and clean to-do list application that allows you to add, delete, and manage tasks. Features include marking tasks as complete, batch operations for all tasks, and automatic data persistence. Built with HTML, CSS, and vanilla JavaScript.
@@ -54,9 +56,18 @@ The `saveTodos()` function automatically saves after every change (add, delete, 
 - `clearAll()`: Removes all tasks from the list
 - `showEmpty()`: Displays "No tasks" message when list is empty
 
-## Installation
+## Installation & Usage
+
+### Try it online
+
+Visit the [live demo](https://olisebz.github.io/ToDo/) - no installation needed!
+
+### Run locally
 
 1. Clone or download this repository
 2. Open `index.html` in a web browser
 3. No build process or dependencies required!
----
+
+## Deployment
+
+Deployed via [GitHub Pages](https://pages.github.com/)
