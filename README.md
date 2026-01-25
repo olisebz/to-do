@@ -1,6 +1,6 @@
 # To-Do List
 
-**[Live Demo](https://olisebz.github.io/ToDo/)**
+**[Live Demo](https://olisebz.github.io/to-do/)**
 
 ## Description
 
