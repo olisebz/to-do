@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,24 +8,56 @@
   <script src="script.js" defer></script>
   <title>To-Do List</title>
 </head>
+
 <body>
-  <div class="app-container">
-    <h1>My To-Do List</h1>
-    
-    <div id="container">
-      <input type="text" id="todo-input" placeholder="New task...">
-      <button type="button" id="todo-button">+</button>
-    </div>
-    
-    <div id="container-error"></div>
-    
-    <ul id="todo-list"></ul>
-    
-    <div id="button-container">
-      <button id="todo-checkall" type="button">Mark all</button>
-      <button id="todo-entcheck" type="button">Reset</button>
-      <button id="todo-clear" type="button">Delete</button>
-    </div>
-  </div>
+  <main class="app-container">
+    <header>
+      <h1>Tasks</h1>
+      <p class="date-display" id="date-display"></p>
+    </header>
+
+    <section class="input-section">
+      <div class="input-wrapper">
+        <textarea id="todo-input" placeholder="Add a new task..." aria-label="New task" rows="1"></textarea>
+        <select id="todo-category" aria-label="Category">
+          <option value="Personal">Personal</option>
+          <option value="Work">Work</option>
+          <option value="School">School</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Other" selected>Other</option>
+        </select>
+        <input type="date" id="todo-date" aria-label="Due date">
+        <button type="button" id="todo-button" aria-label="Add task">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+        </button>
+      </div>
+      <div id="container-error" class="error-message" aria-live="polite"></div>
+    </section>
+
+    <section class="list-section">
+      <ul id="todo-list" class="todo-list"></ul>
+    </section>
+
+    <footer class="controls">
+      <div class="stats">
+        <span id="tasks-left">0 tasks left</span>
+      </div>
+      <div class="actions">
+        <button id="todo-checkall" type="button" class="text-btn">Check all</button>
+        <button id="todo-entcheck" type="button" class="text-btn">Reset</button>
+        <button id="todo-clear" type="button" class="text-btn danger">Clear completed</button>
+      </div>
+    </footer>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 <a href="https://github.com/olisebz" target="_blank">olisebz</a> | <a href="LICENSE"
+        target="_blank">MIT License</a></p>
+  </footer>
 </body>
+
 </html>

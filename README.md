@@ -1,73 +1,75 @@
 # To-Do List
 
-**[Live Demo](https://olisebz.github.io/to-do/)**
+**[Live Demo](https://olisebz.github.io/ToDo/)**
 
 ## Description
 
-A simple and clean to-do list application that allows you to add, delete, and manage tasks. Features include marking tasks as complete, batch operations for all tasks, and automatic data persistence. Built with HTML, CSS, and vanilla JavaScript.
+A modern, feature-rich to-do list application built to help you stay organized. It allows you to add tasks with categories and due dates, track your progress, and manages everything with a clean, responsive interface. Built with semantic HTML, modern CSS, and vanilla JavaScript.
 
 ## Features
 
-- Add new tasks (press Enter or click the + button)
-- Mark tasks as complete with checkboxes
-- Delete individual tasks
-- Mark all tasks as complete at once
-- Reset all tasks to incomplete
-- Clear all tasks
-- **LocalStorage persistence** - tasks are saved automatically
-- Clean, minimalist design
-- Responsive layout
+- **Categorize Tasks**: Organize tasks by category (Personal, Work, School, etc.)
+- **Bigger Input Area**: Multi-line text support for detailed task descriptions
+- **Due Dates**: Set due dates for tasks with smart highlighting:
+    - 🟢 Today
+    - 🔴 Overdue
+    - ⚪ Future dates
+    - Automatic year display
+- **Task Management**:
+    - Add new tasks quickly
+    - Mark tasks as complete
+    - Delete individual tasks
+    - "Check all" / "Reset" batch actions
+    - "Clear completed" to tidy up your list
+- **Tasks Counter**: See how many active tasks you have left
+- **Date Header**: Always see the current date at the top
+- **LocalStorage Persistence**: Your tasks are saved automatically and persist between reloads.
+- **Responsiveness**: Works perfectly on desktop and mobile devices.
 
 ## Files
 
-- `index.html`: HTML structure of the to-do list
-- `style.css`: Styling and layout
-- `script.js`: Application logic and LocalStorage handling
+- `index.html`: Structure of the app using semantic HTML5 tags.
+- `style.css`: Modern styling with CSS variables, flexbox, and animations.
+- `script.js`: App logic handling state, events, and data storage.
 
 ## Technology Stack
 
-- **HTML5** - Semantic structure
-- **CSS3** - Modern styling with flexbox
-- **JavaScript (ES6+)** - Event handling and data persistence
-- **LocalStorage API** - Client-side data storage
+- **HTML5** (Semantic)
+- **CSS3** (Variables, Transitions, Flexbox)
+- **JavaScript** (ES6+, LocalStorage)
+
 
 ## How It Works
 
-### Data Persistence
+### Data Structure
 
-Tasks are saved in your browser's LocalStorage in JSON format:
+Tasks are stored in browser's LocalStorage as an array of objects:
 
 ```json
 [
-  { "text": "Buy groceries", "done": false },
-  { "text": "Walk the dog", "done": true }
+  { 
+    "text": "Project Deadline", 
+    "done": false, 
+    "category": "Work",
+    "dueDate": "2026-11-25" 
+  }
 ]
 ```
 
-The `saveTodos()` function automatically saves after every change (add, delete, check, uncheck), and `loadTodos()` retrieves them when the page loads.
-
 ### Key Functions
 
-- `addTodo()`: Adds a new task to the list
-- `createTodoItem()`: Creates the DOM elements for each task
-- `saveTodos()`: Saves all tasks to LocalStorage
-- `loadTodos()`: Loads tasks from LocalStorage on page load
-- `checkAll()` / `uncheckAll()`: Batch operations for all tasks
-- `clearAll()`: Removes all tasks from the list
-- `showEmpty()`: Displays "No tasks" message when list is empty
+- `addTodo()`: Creates a new task with category and optional due date.
+- `updateDate()`: Displays the current full date in the header.
+- `updateStats()`: Updates the "X tasks left" counter.
+- `createTodoItem()`: Generates the DOM elements with smart date formatting.
 
-## Installation & Usage
+## Usage
 
-### Try it online
-
-Visit the [live demo](https://olisebz.github.io/to-do/) - no installation needed!
-
-### Run locally
-
-1. Clone or download this repository
-2. Open `index.html` in a web browser
-3. No build process or dependencies required!
+1. **Add a Task**: Type your task name.
+2. **Select Category**: Choose a category (defaults to **Other**).
+3. **Set Due Date**: Optionally pick a date.
+4. **Hit Enter**: Or click the + button to add.
 
 ## Deployment
 
-Deployed via [GitHub Pages](https://pages.github.com/)
+Deployed via [GitHub Pages](https://pages.github.com/). To run locally, simply open `index.html` in your browser.
